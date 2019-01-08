@@ -1,20 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import connection from '../helpers/data/connection';
 
 import Auth from '../components/Auth/Auth';
-import Weather from '../components/Weather/Weather';
-import Events from '../components/Events/Events';
-import Articles from '../components/Articles/Articles';
-import Messages from '../components/Messages/Messages';
-import MyNavbar from '../components/MyNavbar/MyNavbar';
-
+import MyNavBar from '../components/MyNavbar/MyNavbar';
 import './App.scss';
 import authRequests from '../helpers/data/authRequests';
 
-class App extends Component {
+class App extends React.Component {
   state = {
     authed: false,
   }
@@ -43,27 +38,24 @@ class App extends Component {
   }
 
   render() {
+    const { authed } = this.state;
     const logoutClickEvent = () => {
       authRequests.logoutUser();
       this.setState({ authed: false });
     };
 
-    if (!this.state.authed) {
+    if (!authed) {
       return (
         <div className="App">
-          <MyNavbar isAuthed={this.state.authed} logoutClickEvent={logoutClickEvent} />
-          <Auth isAuthenticated={this.isAuthenticated}/>
+          <MyNavBar isAuthed={authed} logoutClickEvent={logoutClickEvent}/>
+          <Auth isAuthenticated={this.isAuthenticated} />
         </div>
       );
     }
     return (
       <div className="App">
-        <MyNavbar isAuthed={this.state.authed} logoutClickEvent={logoutClickEvent} />
-        <Weather />
-        <Events />
-        <Articles />
-        <Events />
-        <Messages />
+        <MyNavBar isAuthed={authed} logoutClickEvent={logoutClickEvent}/>
+        You are authenticated.
       </div>
     );
   }
