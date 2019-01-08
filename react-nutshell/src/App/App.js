@@ -1,33 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button } from 'reactstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          <button className="btn btn-danger">HELP</button>
-          <Button
-            tag="a"
-            color="info"
-            size="large"
-            href="http://google.com"
-            target="_blank"
-          >Reactstrap</Button>
-        </header>
+        <button className='btn btn-danger'>HELP ME</button>
+        <Button
+          tag="a"
+          color="success"
+          size="large"
+          href="http://reactstrap.github.io"
+          target="_blank"
+        >View Reactstrap Docs</Button>
       </div>
     );
   }
